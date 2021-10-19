@@ -1,0 +1,9 @@
+.profile__info {
+  
+}
+
+@media screen and (max-width: 617px) {
+  .profile__info {
+    flex-direction: column;
+  }
+}
