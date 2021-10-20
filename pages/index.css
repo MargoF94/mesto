@@ -47,8 +47,10 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 /* POPUP */
-@import url();
-@import url();
-@import url();
-@import url();
-@import url();
+@import url(../blocks/popup/__button-close/popup__button-close.css);
+@import url(../blocks/popup/__button-submit/popup__button-submit.css);
+@import url(../blocks/popup/__description/popup__description.css);
+@import url(../blocks/popup/__main/popup__main.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/popup.css);
