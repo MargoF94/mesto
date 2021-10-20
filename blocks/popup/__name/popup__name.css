@@ -15,3 +15,14 @@
   line-height: 17px;
   color: #000000;
 }
+
+.pupup__name:focus {  
+  outline: none;
+}
+
+@media screen and (max-width: 617px) {
+  .pupup__name {
+    margin: 75px 22px 0 22px;
+    width: 238px;
+  }
+}

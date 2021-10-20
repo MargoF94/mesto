@@ -12,3 +12,13 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+@media screen and (max-width: 617px) {
+  .popup__button-close {
+    background: url(../../../images/CloseIcon320.svg);
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0;
+  }
+}
