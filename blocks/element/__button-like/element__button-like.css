@@ -6,3 +6,13 @@
   margin: 31px 30px 30px 0;
   padding: 0;
 }
+
+.element__button-like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.element__button-like:active {
+  background: url(../../../images/Like_Button_active.svg);
+  opacity: 1;
+}
