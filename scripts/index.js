@@ -1,20 +1,20 @@
 // Объявление переменных
 
-const profileFormElement = document.querySelector('.popup');
+const profileFormElement = document.querySelector('.form-profile');
 
 const profileFormOpenBtn = document.querySelector('.profile__button-edit');
-const profileFormCloseBtn = profileFormElement.querySelector('.popup__button-close');
-const profileFormSubminBtn = profileFormElement.querySelector('.popup__button-submit');
+const profileFormCloseBtn = profileFormElement.querySelector('.form-profile__button-close');
+const profileFormSubminBtn = profileFormElement.querySelector('.form-profile__button-submit');
 let profileName = document.querySelector('.profile__title');
 let profileDescription = document.querySelector('.profile__subtitle');
 
-let nameInput = profileFormElement.querySelector('.pupup__name');
-let descriptionInput = profileFormElement.querySelector('.popup__description');
+let nameInput = profileFormElement.querySelector('.form-profile__name');
+let descriptionInput = profileFormElement.querySelector('.form-profile__description');
 
 // Открывает форму
 
 function openProfileForm() {
-  profileFormElement.classList.add('popup_opened');
+  profileFormElement.classList.add('form-profile_opened');
   nameInput.value = profileName.innerText;
   descriptionInput.value = profileDescription.innerText;
 }
@@ -22,7 +22,7 @@ function openProfileForm() {
 // Закрывает форму
 
 function closeProfileForm() {
-  profileFormElement.classList.remove('popup_opened');
+  profileFormElement.classList.remove('form-profile_opened');
 }
 
 // Отправка формы

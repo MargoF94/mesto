@@ -1,4 +1,4 @@
-.pupup__name {
+.form-profile__name {
   box-sizing: border-box;
   margin: 54px 0 0 36px;
   padding: 0 0 13px 0;
@@ -16,12 +16,12 @@
   color: #000000;
 }
 
-.pupup__name:focus {  
+.form-profile__name:focus {  
   outline: none;
 }
 
 @media screen and (max-width: 617px) {
-  .pupup__name {
+  .form-profile__name {
     margin: 75px 22px 0 22px;
     width: 238px;
   }

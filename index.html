@@ -19,7 +19,7 @@
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="button profile__button-edit"></button>
+          <button type="button" class="button profile__button-edit"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
         
@@ -34,7 +34,7 @@
           <img src="./images/place_baikal.jpeg" alt="Озеро Байкал" class="element__image">
           <div class="element__info">
             <h3 class="element__title">Байкал</h3>
-            <button class="button element__button-like"></button>
+            <button type="button" class="button element__button-like"></button>
           </div>
         </li>
 
@@ -86,16 +86,14 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="page__popup popup">
-    <div class="pupup__main">
-      <button class="button popup__button-close"></button>
-      <form class="popup_form" method="post">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="pupup__name" type="text" name="profile-name" id="profile-name" value="">
-        <input class="popup__description" type="text" name="profile-desctiption" id="profile-desctiption" value="">
-        <button type="submit" class="button popup__button-submit">Сохранить</button>
-      </form>
-    </div>
+  <section class="page__form-profile form-profile">
+    <form class="form-profile__form-body" method="post">
+      <button type="button" class="button form-profile__button-close"></button>
+      <h2 class="form-profile__title">Редактировать профиль</h2>
+      <input class="form-profile__name" type="text" name="profile-name" id="profile-name" value="">
+      <input class="form-profile__description" type="text" name="profile-desctiption" id="profile-desctiption" value="">
+      <button type="submit" class="button form-profile__button-submit">Сохранить</button>
+    </form>
   </section>
 
   <script src="./scripts/index.js"></script>

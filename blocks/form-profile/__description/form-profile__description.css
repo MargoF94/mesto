@@ -1,4 +1,4 @@
-.popup__description {
+.form-profile__description {
   box-sizing: border-box;
   display: block;
   margin: 30px 36px 0 36px;
@@ -16,12 +16,12 @@
   color: #000000;
 }
 
-.popup__description:focus {
+.form-profile__description:focus {
   outline: none;
 }
 
 @media screen and (max-width: 617px) {
-  .popup__description {
+  .form-profile__description {
     margin: 30px 22px 0 22px;
     width: 238px;
   }

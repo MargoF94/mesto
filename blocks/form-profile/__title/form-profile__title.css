@@ -1,4 +1,4 @@
-.popup__title {
+.form-profile__title {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 617px) {
-  .popup__title {
+  .form-profile__title {
     width: 238px;
     margin: 25px 22px 0 22px;
     font-size: 18px;

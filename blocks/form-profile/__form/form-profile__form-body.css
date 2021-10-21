@@ -1,4 +1,4 @@
-.pupup__main {
+.form-profile__form-body {
   width: 430px;
   height: 330px;
   position: relative;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 617px) {
-  .pupup__main {
+  .form-profile__form-body {
     width: 282px;
     height: 322px;
   }

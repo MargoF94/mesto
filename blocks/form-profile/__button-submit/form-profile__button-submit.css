@@ -1,4 +1,4 @@
-.popup__button-submit {
+.form-profile__button-submit {
   box-sizing: border-box;
   margin: 40px 36px 0 36px;
   padding: 0;
@@ -16,13 +16,13 @@
   border-radius: 2px;
 }
 
-.popup__button-submit:hover {
+.form-profile__button-submit:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
 @media screen and (max-width: 617px) {
-  .popup__button-submit {
+  .form-profile__button-submit {
     margin: 45px 22px 0 22px;
     width: 238px;
     font-size: 14px;
