@@ -89,12 +89,15 @@
   <section class="page__popup popup">
     <div class="pupup__main">
       <button class="popup__button-close"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <input class="pupup__name" type="text" value="" placeholder="Жак-Ив Кусто">
-      <input class="popup__description" type="text" value="" placeholder="Исследователь океана">
-      <button class="popup__button-submit">Сохранить</button>
+      <form class="popup_form" action="" method="post"></form>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="pupup__name" type="text" name="profile-name" id="profile-name" value="">
+        <input class="popup__description" type="text" name="profile-desctiption" id="profile-desctiption" value="">
+        <button type="submit" class="popup__button-submit">Сохранить</button>
+      </form>
     </div>
   </section>
 
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
