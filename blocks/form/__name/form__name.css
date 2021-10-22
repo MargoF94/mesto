@@ -1,7 +1,7 @@
-.form-profile__name {
+.form__name {
   box-sizing: border-box;
-  margin: 54px 0 0 36px;
-  padding: 0 0 13px 0;
+  margin: 50px 0 0 36px;
+  padding: 0 0 11px 0;
   width: 358px;
   display: block;
   border-top: none;
@@ -16,12 +16,12 @@
   color: #000000;
 }
 
-.form-profile__name:focus {  
+.form__name:focus {  
   outline: none;
 }
 
 @media screen and (max-width: 617px) {
-  .form-profile__name {
+  .form__name {
     margin: 75px 22px 0 22px;
     width: 238px;
   }

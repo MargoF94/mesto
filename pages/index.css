@@ -9,7 +9,7 @@
 @import url(../blocks/page/__elements/page__elements.css);
 @import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/page/__header/page__header.css);
-@import url(../blocks/page/__form-profile/page__form-profile.css);
+@import url(../blocks/page/__popup/page__popup.css);
 @import url(../blocks/page/__profile/page__profile.css);
 
 /* BUTTON */
@@ -40,17 +40,21 @@
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__button-like/_active/element__button-like_active.css);
 
 /* FOOTER */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-/* FORM-PROFILE */
-@import url(../blocks/form-profile/form-profile.css);
-@import url(../blocks/form-profile/__button-close/form-profile__button-close.css);
-@import url(../blocks/form-profile/__button-submit/form-profile__button-submit.css);
-@import url(../blocks/form-profile/__description/form-profile__description.css);
-@import url(../blocks/form-profile/__form/form-profile__form-body.css);
-@import url(../blocks/form-profile/__name/form-profile__name.css);
-@import url(../blocks/form-profile/__title/form-profile__title.css);
-@import url(../blocks/form-profile/_opened/form-profile_opened.css);
+/* POPUP */
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+
+/* FORM */
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__button-close/form__button-close.css);
+@import url(../blocks/form/__button-submit/form__button-submit.css);
+@import url(../blocks/form/__description/form__description.css);
+@import url(../blocks/form/__name/form__name.css);
+@import url(../blocks/form/__title/form__title.css);

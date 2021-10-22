@@ -1,9 +1,9 @@
-.form-profile__description {
+.form__description {
   box-sizing: border-box;
   display: block;
   margin: 30px 36px 0 36px;
   width: 358px;
-  padding: 0 0 13px 0;
+  padding: 0 0 11px 0;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -16,13 +16,13 @@
   color: #000000;
 }
 
-.form-profile__description:focus {
+.form__description:focus {
   outline: none;
 }
 
 @media screen and (max-width: 617px) {
-  .form-profile__description {
-    margin: 30px 22px 0 22px;
+  .form__description {
+    margin: 26px 22px 0 22px;
     width: 238px;
   }
 }

@@ -1,4 +1,4 @@
-.form-profile__form-body {
+.popup__container {
   width: 430px;
   height: 330px;
   position: relative;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 617px) {
-  .form-profile__form-body {
+  .popup__container {
     width: 282px;
     height: 322px;
   }

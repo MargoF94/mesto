@@ -1,4 +1,4 @@
-.form-profile__button-close {
+.form__button-close {
   background: center transparent url(../../../images/CloseIcon.svg);
   width: 32px;
   height: 32px;
@@ -8,13 +8,13 @@
   right: -40px;
 }
 
-.form-profile__button-close:hover {
+.form__button-close:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 617px) {
-  .form-profile__button-close {
+  .form__button-close {
     background: url(../../../images/CloseIcon320.svg);
     width: 20px;
     height: 20px;
