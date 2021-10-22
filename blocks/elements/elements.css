@@ -1,3 +1,4 @@
 .elements {
   max-width: 880px;
+  width: calc(100% - (19px*2));
 }

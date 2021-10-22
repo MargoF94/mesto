@@ -1,5 +1,7 @@
 .profile__info {
   position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 617px) {

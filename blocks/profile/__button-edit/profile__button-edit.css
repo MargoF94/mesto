@@ -4,11 +4,26 @@
   width: 24px;
   height: 24px;
   border: none;
+  position: absolute;
+  top: 15px;
+  right: -20px;
 }
 
 .profile__button-edit:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+
+/* @media screen and (max-width: 1023px) {
+  .profile__button-edit {
+    top: 5px;
+  }
+} */
+
+@media screen and (max-width: 767px) {
+  .profile__button-edit {
+    top: 5px;
+  }
 }
 
 @media screen and (max-width: 617px) {
