@@ -18,5 +18,6 @@
   .profile__button-add {
     width: 100%;
     background: transparent center no-repeat url("../../../images/Add_Button_small.svg");
+    margin-top: 0;
   }
 }
