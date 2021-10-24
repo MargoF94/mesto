@@ -13,22 +13,16 @@
   cursor: pointer;
 }
 
-/* @media screen and (max-width: 1023px) {
-  .profile__button-edit {
-    top: 5px;
-  }
-} */
-
 @media screen and (max-width: 767px) {
   .profile__button-edit {
-    top: 5px;
+    margin: 24px 0 0 0;
   }
 }
 
 @media screen and (max-width: 617px) {
   .profile__button-edit {
     position: absolute;
-    top: 121px;
+    top: 131px;
     left: 197px;
     width: 18px;
     height: 18px;
