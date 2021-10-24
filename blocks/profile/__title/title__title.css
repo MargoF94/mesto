@@ -30,6 +30,6 @@
 @media screen and (max-width: 617px) {
   .profile__title {
     text-align: center;
-    margin: 0 auto 16px;
+    margin: 0 auto 3px;
   }
 }
