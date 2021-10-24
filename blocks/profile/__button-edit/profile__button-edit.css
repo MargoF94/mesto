@@ -4,9 +4,8 @@
   width: 24px;
   height: 24px;
   border: none;
-  position: absolute;
-  top: 15px;
-  right: -20px;
+  align-self: flex-start;
+  margin: 30px 18px 0 18px;
 }
 
 .profile__button-edit:hover {
