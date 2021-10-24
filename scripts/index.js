@@ -1,10 +1,11 @@
 // Объявление переменных
 
 let popupElement = document.querySelector('.popup');
+let profileFormElement = popupElement.querySelector('.popup__form');
 
 let popupOpenBtn = document.querySelector('.profile__button-edit');
 let popupCloseBtn = popupElement.querySelector('.form__button-close');
-let formSubmitBtn = popupElement.querySelector('.form__button-submit');
+//let formSubmitBtn = popupElement.querySelector('.form__button-submit');
 let profileName = document.querySelector('.profile__title');
 let profileDescription = document.querySelector('.profile__subtitle');
 
@@ -41,4 +42,4 @@ function formSubmitHandler (evt) {
 
 popupOpenBtn.addEventListener('click', openPopup);
 popupCloseBtn.addEventListener('click', closePopup);
-formSubmitBtn.addEventListener('click', formSubmitHandler); 
+profileFormElement.addEventListener('submit', formSubmitHandler); 
