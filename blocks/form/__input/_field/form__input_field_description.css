@@ -1,0 +1,15 @@
+.form__input_field_description {
+  margin: 28px 36px 0 36px;
+  width: 358px;
+  padding: 0 0 11px 0;
+}
+
+.fform__input_field_description:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 617px) {
+  .form__input_field_description {
+    margin: 26px 22px 0 22px;
+  }
+}

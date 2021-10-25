@@ -1,7 +1,5 @@
-.form__name {
+.form__input {
   box-sizing: border-box;
-  margin: 48px 0 0 36px;
-  padding: 0 0 11px 0;
   width: 358px;
   display: block;
   border-top: none;
@@ -16,13 +14,12 @@
   color: #000000;
 }
 
-.form__name:focus {  
+.form__input:focus {
   outline: none;
 }
 
 @media screen and (max-width: 617px) {
-  .form__name {
-    margin: 75px 22px 0 22px;
+  .form__input {
     width: 238px;
   }
 }

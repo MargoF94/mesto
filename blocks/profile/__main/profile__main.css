@@ -1,6 +1,5 @@
 .profile__main {
   display: flex;
-  align-items: center;
   align-items: flex-start;
   position: relative;
 }
