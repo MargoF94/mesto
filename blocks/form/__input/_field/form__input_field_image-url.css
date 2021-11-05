@@ -1,10 +1,10 @@
-.form__input_field_description {
+.form__input_field_image-url {
   margin: 28px 36px 0 36px;
   padding: 0 0 11px 0;
 }
 
 @media screen and (max-width: 617px) {
-  .form__input_field_description {
+  .form__input_field_image-url{
     margin: 26px 22px 0 22px;
   }
 }
