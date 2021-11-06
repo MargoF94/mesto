@@ -8,6 +8,9 @@ const openImagePopup = document.querySelector('.popup_role_open-image')
 const profileFormElement = editProfilePopup.querySelector('.form_role_edit-profile');
 const cardFormElement = addElementPopup.querySelector('.form_role_add-image');
 
+// Forms
+const addElementForm = document.querySelector('.form_role_add-image');
+
 /// Buttons
 const editProfileButton = document.querySelector('.profile__button-edit');
 const closeEditProfileButton = editProfilePopup.querySelector('.popup__button-close');
@@ -21,9 +24,6 @@ const profileDescription = document.querySelector('.profile__subtitle');
 
 const nameInput = editProfilePopup.querySelector('.form__input_field_name');
 const descriptionInput = editProfilePopup.querySelector('.form__input_field_description');
-
-const imageName = addElementPopup.querySelector('.element__title');
-const imageUrl = addElementPopup.querySelector('element__image');
 
 const imageNameInput = addElementPopup.querySelector('.form__input_field_image-name');
 const imageUrlInput = addElementPopup.querySelector('.form__input_field_image-url');
@@ -63,46 +63,58 @@ const initialCards = [
 
 // Создать карточку
 
-function renderCard(obj) {
+function createCard(obj) {
   ///1. Создавать разметку
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const imageToOpen = cardElement.querySelector('.element__image');
 
   ///2. Заменять в разметке текст
   cardElement.querySelector('.element__title').innerText = obj.name;
-  cardElement.querySelector('.element__image').src = obj.link;
-  cardElement.querySelector('.element__image').alt = obj.name;
+  imageToOpen.src = obj.link;
+  imageToOpen.alt = obj.name;
     
   ///3. Вставлять разметку в dom
-  elementsList.prepend(cardElement);
+  renderCard(elementsList, cardElement);
+  // elementsList.prepend(cardElement);
 
   // 4. Устанавливает event listeners
   const likeButton = cardElement.querySelector('.element__button-like');
   const deleteButton = cardElement.querySelector('.element__button-delete');
-  const imageToOpen = cardElement.querySelector('.element__image');
 
   likeButton.addEventListener('click', handleLike);
   deleteButton.addEventListener('click', handleDelete);
   imageToOpen.addEventListener('click', handleImageOpen);
 }
 
-function renderCardsOnLoad () {
+// Добавляет карточку в лист
+function renderCard(listToRenderTo, card) {
+  listToRenderTo.prepend(card);
+}
+
+function createCardsOnLoad () {
   initialCards.forEach((element) => {
-    renderCard(element);
+    createCard(element);
   })
 };
 
 // Загружает карточки при загрузке страницы
-window.addEventListener('load', renderCardsOnLoad());
+window.addEventListener('load', createCardsOnLoad());
 
 // Открывает форму
 
 function openPopup(popup) {
   if (popup === editProfilePopup) {
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
+    fillInValues(nameInput, profileName, descriptionInput, profileDescription);
   }
   popup.classList.add('popup_opened');
 }
+
+// Добавляет значения в поля
+
+function fillInValues(name, description, nameValue, descriptionValue) {
+  name.value = nameValue.textContent;
+  description.value = descriptionValue.textContent;
+} 
 
 // Закрывает форму
 
@@ -132,9 +144,17 @@ function formCardSubmitHandler (evt) {
   newCardObj.name = imageNameInput.value;
   newCardObj.link = imageUrlInput.value;
 
-  renderCard(newCardObj);
+  createCard(newCardObj);
+
+  clearFields(addElementForm);
 
   closePopup(addElementPopup);
+}
+
+// Очищает поля
+
+function clearFields(form) {
+  form.reset();
 }
 
 // Event Handlers
@@ -144,7 +164,7 @@ function handleLike(evt) {
 }
 
 function handleDelete(evt) {
-  evt.target.parentNode.parentNode.removeChild(evt.target.parentNode);
+  evt.target.closest('ul').removeChild(evt.target.closest('li'));
 }
 
 function handleImageOpen(evt) {
@@ -154,6 +174,7 @@ function handleImageOpen(evt) {
   const imagePopupTitle = openImagePopup.querySelector('.image-popup__title');
   
   imagePopupImage.src = image.src;
+  imagePopupImage.alt = image.alt;
   imagePopupTitle.innerText = image.alt;
 
   openPopup(openImagePopup);
