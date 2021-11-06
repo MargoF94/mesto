@@ -67,15 +67,15 @@ function createCard(obj) {
   ///1. Создавать разметку
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const imageToOpen = cardElement.querySelector('.element__image');
+  const imageTitle = cardElement.querySelector('.element__title');
 
   ///2. Заменять в разметке текст
-  cardElement.querySelector('.element__title').innerText = obj.name;
+  imageTitle.innerText = obj.name;
   imageToOpen.src = obj.link;
   imageToOpen.alt = obj.name;
     
   ///3. Вставлять разметку в dom
-  renderCard(elementsList, cardElement);
-  // elementsList.prepend(cardElement);
+  // renderCard(elementsList, cardElement);
 
   // 4. Устанавливает event listeners
   const likeButton = cardElement.querySelector('.element__button-like');
@@ -84,16 +84,19 @@ function createCard(obj) {
   likeButton.addEventListener('click', handleLike);
   deleteButton.addEventListener('click', handleDelete);
   imageToOpen.addEventListener('click', handleImageOpen);
+  
+  return cardElement;
 }
 
 // Добавляет карточку в лист
-function renderCard(listToRenderTo, card) {
-  listToRenderTo.prepend(card);
+function renderCard(listToRenderTo, cardObj) {
+  const element = createCard(cardObj);
+  listToRenderTo.prepend(element);
 }
 
 function createCardsOnLoad () {
   initialCards.forEach((element) => {
-    createCard(element);
+    renderCard(elementsList, element);
   })
 };
 
@@ -144,7 +147,7 @@ function formCardSubmitHandler (evt) {
   newCardObj.name = imageNameInput.value;
   newCardObj.link = imageUrlInput.value;
 
-  createCard(newCardObj);
+  renderCard(elementsList, newCardObj);
 
   clearFields(addElementForm);
 
