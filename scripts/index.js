@@ -106,9 +106,6 @@ window.addEventListener('load', createCardsOnLoad());
 // Открывает форму
 
 function openPopup(popup) {
-  if (popup === editProfilePopup) {
-    fillInValues(nameInput, profileName, descriptionInput, profileDescription);
-  }
   popup.classList.add('popup_opened');
 }
 
@@ -187,6 +184,7 @@ function handleImageOpen(evt) {
 
 editProfileButton.addEventListener('click', function() {
   openPopup(editProfilePopup);
+  fillInValues(nameInput, descriptionInput, profileName, profileDescription);
 });
 addImageButton.addEventListener('click', function() {
   openPopup(addElementPopup);
