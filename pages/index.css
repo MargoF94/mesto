@@ -62,8 +62,12 @@
 @import url(../blocks/form/__input/_field/form__input_field_name.css);
 @import url(../blocks/form/__input/_field/form__input_field_description.css);
 @import url(../blocks/form/__button-submit/form__button-submit.css);
+@import url(../blocks/form/__button-submit/_inactive/form__button-submit_inactive.css);
 @import url(../blocks/form/__input/_field/form__input_field_image-name.css);
 @import url(../blocks/form/__input/_field/form__input_field_image-url.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_active/form__input-error_active.css);
 
 /* IMAGE-POPUP */
 @import url(../blocks/image-popup/image-popup.css);
