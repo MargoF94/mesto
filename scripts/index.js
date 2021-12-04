@@ -1,8 +1,8 @@
 // Импорт
 
-import {initialCards} from './initialCards.js';
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { initialCards } from './initialCards.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 import { configurations } from './configurations.js';
 
 
@@ -24,9 +24,6 @@ const editProfileButton = document.querySelector('.profile__button-edit');
 const addImageButton = document.querySelector('.profile__button-add');
 
 /// Elements
-const imagePopupImage = openImagePopup.querySelector('.image-popup__image-opened');
-const imagePopupTitle = openImagePopup.querySelector('.image-popup__title');
-
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
 

@@ -13,6 +13,12 @@
 
 Каждая картачка создается при вызове класса Card, элемент валидации - класса FormValidator. 
 
+```javaScript
+const card = new Card(cardObj, cardTemplate);
+
+const validator = new FormValidator(configurations, form);
+```
+
 ### Валидация форм в живом времени
 
 Пользователю дается возможность изменить информацию профиля и загрузить в блог собственное изображение.
