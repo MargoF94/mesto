@@ -1,8 +1,9 @@
 export class Card {
-  constructor(cardObj, template) {
+  constructor(cardObj, template, handleCardClick) {
     this._templateElement = template;
     this._image = cardObj.link;
     this._title = cardObj.name;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -17,11 +18,14 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.element__image');
+    this._likeButton = this._element.querySelector('.element__button-like');
+    this._deleteButton = this._element.querySelector('.element__button-delete');
     this._setEventListeners();
 
     // Добавить данные
-    this._element.querySelector('.element__image').src = this._image;
-    this._element.querySelector('.element__image').alt = this._title;
+    this._cardImage.src = this._image;
+    this._cardImage.alt = this._title;
     this._element.querySelector('.element__title').textContent = this._title;
 
     // Вернуть созданный элемент
@@ -31,55 +35,31 @@ export class Card {
   _setEventListeners() {
 
     // Добавить обработчик лайка
-    this._element
-    .querySelector('.element__button-like')
+    this._likeButton
     .addEventListener('click', () => {
       this._handleLike();
     });
 
     // Добавить обработчик удаления
-    this._element
-    .querySelector('.element__button-delete')
+    this._deleteButton
     .addEventListener('click', () => {
       this._handleDelete();
     });
 
-    // Добавить обработчик зума
-    this._element
-    .querySelector('.element__image')
+    // Добавить обработчик клика по картинке
+    this._cardImage
     .addEventListener('click', () => {
-      this._handleZoom();
+      this._handleCardClick(this._title, this._image);
     });
   }
 
   _handleLike() {
-    this._element
-    .querySelector('.element__button-like')
+    this._likeButton
     .classList
     .toggle('element__button-like_active');
   }
 
   _handleDelete() {
-    this._element
-    .querySelector('.element__button-delete')
-    .closest('ul')
-    .removeChild(this._element.querySelector('.element__button-delete').closest('li'));
-  }
-
-  _handleZoom() {
-    document.querySelector('.image-popup__image-opened').src = this._image;
-    document.querySelector('.image-popup__image-opened').alt = this._title;
-    document.querySelector('.image-popup__title').innerText = this._title;
-
-    document.querySelector('.popup_role_open-image').classList.add('popup_opened');
-    window.addEventListener('keydown', this._handleEscape);
-  }
-
-  _handleEscape(evt) {
-    if(evt.key === 'Escape') {
-      // const popup = document.querySelector('.popup_opened');
-      document.querySelector('.popup_role_open-image').classList.remove('popup_opened');
-      window.removeEventListener('keydown', this._handleEscape);
-    }
+    this._element.remove();
   }
 }

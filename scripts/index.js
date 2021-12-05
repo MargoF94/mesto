@@ -37,26 +37,41 @@ const elementsList = document.querySelector('.elements__container');
 
 const cardTemplate = document.querySelector('.element-template').content;
 
+const imageOpened = document.querySelector('.image-popup__image-opened');
+const imageOpenedTitle = document.querySelector('.image-popup__title');
+
 // Загрузить карточки при загрузке страницы
 
 window.addEventListener('load', createCardsOnLoad);
 
 // Создает новую карточку
 
-function crateNewCard (cardObj) {
-  const card = new Card(cardObj, cardTemplate);
-  const cardElement = card.generateCard();
+function prependCard (cardObj) {
+  const cardElement = getCard(cardObj);
 
   // Добавляет карточку в лист
   elementsList.prepend(cardElement);
 }
 
+function getCard(cardObj) {
+  const card = new Card(cardObj, cardTemplate, handleCardClick);
+  const cardElement = card.generateCard()
+  return cardElement;
+}
+
 // Создает начальный сет карточек для загрузки на страницу
 function createCardsOnLoad () {
   initialCards.forEach((element) => {
-    crateNewCard(element);
+    prependCard(element);
   })
 };
+
+function handleCardClick(name, link) {
+  imageOpened.src = link;
+  imageOpened.alt = name;
+  imageOpenedTitle.innerText = name;
+  openPopup(imageOpened.closest('.popup'));
+}
 
 // Открывает форму
 
@@ -91,27 +106,6 @@ function closePopup(popup) {
   window.removeEventListener('keydown', closeOnEsc);
 }
 
-// Очищает поля с текстом ошибок
-
-function clearErrorMessages(form) {
-  const inputElements = [...form.querySelectorAll('.form__input')];
-  const errorElements = [...form.querySelectorAll('.form__input-error')];
-  
-  // Убирает текст ошибок
-  errorElements.forEach((element) => {
-    if(element.textContent !== '') {
-      element.textContent = '';
-    }
-  });
-
-  // Снимает класс с ошибкой с поля ввода
-  inputElements.forEach((element) => {
-    if(element.classList.contains('form__input_type_error')) {
-      element.classList.remove('form__input_type_error')
-    }
-  });
-}
-
 // Отправка формы профиля
 
 function formProfileSubmitHandler (evt) {
@@ -138,34 +132,33 @@ function formCardSubmitHandler (evt) {
   newCardObj.link = imageUrlInput.value;
 
   // Создать новую карточку
-  crateNewCard(newCardObj);
+  prependCard(newCardObj);
 
   // Закрыть попап
   const popup = evt.target.closest('.popup');
   closePopup(popup);
 }
 
-//  Отключает кнопку отправки формы
-
-function disableSubmitButton(popup) {
-  const button = popup.querySelector('.form__button-submit');
-  button.classList.add('form__button-submit_inactive');
-  button.disabled = true;
+function setValidtion () {
+  formList.forEach((form) => {
+    const validator = new FormValidator(configurations, form);
+    validator.enableValidation();
+    validator.resetValidation()
+  });
+  
 }
-
 // Event Listeners
 
 editProfileButton.addEventListener('click', function() {
   openPopup(editProfilePopup);
   fillInValues(nameInput, descriptionInput, profileName, profileDescription);
-  clearErrorMessages(profileFormElement);
+  setValidtion();
 });
 
 addImageButton.addEventListener('click', function() {
   openPopup(addElementPopup);
   cardFormElement.reset();
-  clearErrorMessages(cardFormElement);
-  disableSubmitButton(addElementPopup);
+  setValidtion();
 });
 
 // Закрывает попапы при клике на кнопку закрытия или оверлей
@@ -180,8 +173,3 @@ popupList.forEach((popup) => {
 
 profileFormElement.addEventListener('submit', formProfileSubmitHandler); 
 cardFormElement.addEventListener('submit', formCardSubmitHandler);
-
-formList.forEach((form) => {
-  const validator = new FormValidator(configurations, form);
-  validator.enableValidation();
-});

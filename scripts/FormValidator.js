@@ -8,18 +8,9 @@ export class FormValidator {
     this._inputErrorClass = configurations.inputErrorClass;
     this._errorClass = configurations.errorClass;
     this._form = form;
+    this._inputList = [...this._form.querySelectorAll(this._inputSelector)];
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
   }
-
-  // enableValidation () {
-  //   const formList = [...document.querySelectorAll(this._formSelector)];
-  
-  //   formList.forEach((formElement) => {
-  //     formElement.addEventListener('submit', function(evt) {
-  //       evt.preventDefault();
-  //     });
-  //     this._setEventListeners();
-  //   });
-  // };
 
   enableValidation () {
     this._form.addEventListener('submit', function(evt) {
@@ -28,22 +19,31 @@ export class FormValidator {
     this._setEventListeners();
   };
 
-  _setEventListeners() {
-    const inputList = [...this._form.querySelectorAll(this._inputSelector)];
-    const buttonElement = this._form.querySelector(this._submitButtonSelector);
-  
-    this._toggleButton(inputList, buttonElement, this._inactiveButtonClass);
+  _setEventListeners() {  
+    this._toggleButton(this._inputList, this._buttonElement, this._inactiveButtonClass);
   
     // Проходит по всем инпутам и накладывает на них обработчики события ввода текста в поле.
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         // Проверка валидности конкретного инпута.
         this._checkInputValidity(inputElement); 
   
         //Изменение состояния кнопки отправки в зависимости от валидности полей.
-        this._toggleButton(inputList, buttonElement, this._inactiveButtonClass); 
+        this._toggleButton(this._inputList, this._buttonElement, this._inactiveButtonClass); 
       });
     });
+  }
+
+  resetValidation() {
+    this._toggleButton(this._inputList, this._buttonElement, this._inactiveButtonClass);
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+
+    //  Отключает кнопку отправки формы
+    const button = document.querySelector(this._submitButtonSelector);
+    button.classList.add(this._inactiveButtonClass);
+    button.disabled = true;
   }
 
   /// Проверка валидности конкретного инпута.
@@ -83,6 +83,17 @@ export class FormValidator {
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(`${this._errorClass}_active`);
     errorElement.textContent = '';
+
+    // Очищает поля с текстом ошибок
+    if (errorElement.textContent !== '') {
+      errorElement.textContent = '';
+    }
+
+    this._inputList.forEach((element) => {
+      if(element.classList.contains('form__input_type_error')) {
+      element.classList.remove('form__input_type_error')
+      }
+      });
   };
 
   // Проверяет поля формы на наличие хотя бы одного невалидного элемента.
