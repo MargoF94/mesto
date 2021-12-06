@@ -52,13 +52,13 @@ export class FormValidator {
   }
 };
 
-  _toggleButton(inputList, buttonElement, inactiveButtonClass) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(inactiveButtonClass);
-      buttonElement.disabled = true;
+  _toggleButton() {
+    if (this._hasInvalidInput(this._inputList)) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.disabled = true;
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.disabled = false;
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.disabled = false;
     }
   }
 

@@ -170,13 +170,13 @@ enableValidation(configurations);
 editProfileButton.addEventListener('click', function() {
   openPopup(editProfilePopup);
   fillInValues(nameInput, descriptionInput, profileName, profileDescription);
-  formValidators[ profileForm.name ].resetValidation();
+  formValidators[ profileFormElement.name ].resetValidation();
 });
 
 addImageButton.addEventListener('click', function() {
   openPopup(addElementPopup);
   cardFormElement.reset();
-  formValidators[ addCardForm.name ].resetValidation();
+  formValidators[ cardFormElement.name ].resetValidation();
 });
 
 // Закрывает попапы при клике на кнопку закрытия или оверлей
