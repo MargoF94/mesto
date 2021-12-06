@@ -55,7 +55,9 @@ function prependCard (cardObj) {
 
 function getCard(cardObj) {
   const card = new Card(cardObj, cardTemplate, handleCardClick);
+  // const validator = new FormValidator(configurations, cardFormElement);
   const cardElement = card.generateCard()
+  // validator.enableValidation();
   return cardElement;
 }
 
@@ -70,7 +72,7 @@ function handleCardClick(name, link) {
   imageOpened.src = link;
   imageOpened.alt = name;
   imageOpenedTitle.innerText = name;
-  openPopup(imageOpened.closest('.popup'));
+  openPopup(openImagePopup);
 }
 
 // Открывает форму
@@ -139,26 +141,42 @@ function formCardSubmitHandler (evt) {
   closePopup(popup);
 }
 
-function setValidtion () {
-  formList.forEach((form) => {
-    const validator = new FormValidator(configurations, form);
-    validator.enableValidation();
-    validator.resetValidation()
-  });
+// function setValidtion () {
+//   formList.forEach((form) => {
+//     const validator = new FormValidator(configurations, form);
+//     validator.enableValidation();
+//     validator.resetValidation()
+//   });
   
-}
+// }
+
+const formValidators = {}
+
+// Включение валидации
+const enableValidation = (configurations) => {
+  const formList = [...document.querySelectorAll(configurations.formSelector)];
+  formList.forEach((formElement) => {
+    const validateForm = new FormValidator(configurations, formElement);
+   // вот тут в объект записываем под именем формы
+    formValidators[ formElement.name ] = validateForm;
+    validateForm.enableValidation();
+  });
+};
+
+enableValidation(configurations);
+
 // Event Listeners
 
 editProfileButton.addEventListener('click', function() {
   openPopup(editProfilePopup);
   fillInValues(nameInput, descriptionInput, profileName, profileDescription);
-  setValidtion();
+  formValidators[ profileForm.name ].resetValidation();
 });
 
 addImageButton.addEventListener('click', function() {
   openPopup(addElementPopup);
   cardFormElement.reset();
-  setValidtion();
+  formValidators[ addCardForm.name ].resetValidation();
 });
 
 // Закрывает попапы при клике на кнопку закрытия или оверлей
