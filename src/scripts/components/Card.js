@@ -1,8 +1,8 @@
 export class Card {
-  constructor(cardObj, template, handleCardClick) {
+  constructor({ data, handleCardClick }, template) {
     this._templateElement = template;
-    this._image = cardObj.link;
-    this._title = cardObj.name;
+    this._image = data.link;
+    this._title = data.name;
     this._handleCardClick = handleCardClick;
   }
 
@@ -15,6 +15,8 @@ export class Card {
     // вернём DOM-элемент карточки
       return cardElement;
   } 
+
+
 
   generateCard() {
     this._element = this._getTemplate();
@@ -49,7 +51,7 @@ export class Card {
     // Добавить обработчик клика по картинке
     this._cardImage
     .addEventListener('click', () => {
-      this._handleCardClick(this._title, this._image);
+      this._handleCardClick();
     });
   }
 
