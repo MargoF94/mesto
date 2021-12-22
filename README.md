@@ -55,4 +55,4 @@ const validator = new FormValidator(configurations, form);
 
 ## Посмотреть проект
 
-[Нажми меня](https://margof94.github.io/mesto/)
+[Нажми меня](https://margof94.github.io/mesto/src/index.html)
