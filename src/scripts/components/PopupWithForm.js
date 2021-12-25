@@ -9,14 +9,19 @@ export default class PopupWithForm extends Popup {
   }
 
   // собирает данные всех полей формы
-  _getInputValues() {
-    const inputValues = [];
-    this._formInputs.forEach((inputField) => {
-      inputValues.push(inputField.value);
-    });
+  // Данные формы сбрасываются через фунцию reset(),
+  // в следствии чего сбор данных полей формы можно опустить?..
 
-    return inputValues;
-  }
+  // _getInputValues() {
+    // const inputValues = {};
+    // inputValues['name'] = document.querySelector('');
+  //   const inputValues = [];
+  //   this._formInputs.forEach((inputField) => {
+  //     inputValues.push(inputField.value);
+  //   });
+
+  //   return inputValues;
+  // }
 
   setEventListeners() {
     this._popup.querySelector('.form__button-submit').addEventListener('click', this._handleSubmitForm.bind(this));
