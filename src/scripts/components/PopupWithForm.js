@@ -5,26 +5,26 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._handleSubmitForm = handleSubmitForm;
     this._popup = document.querySelector(popupSelector);
-    this._formInputs = [...this._popup.querySelectorAll('.form__input')];
   }
 
   // собирает данные всех полей формы
-  // Данные формы сбрасываются через фунцию reset(),
-  // в следствии чего сбор данных полей формы можно опустить?..
 
-  // _getInputValues() {
-    // const inputValues = {};
-    // inputValues['name'] = document.querySelector('');
-  //   const inputValues = [];
-  //   this._formInputs.forEach((inputField) => {
-  //     inputValues.push(inputField.value);
-  //   });
-
-  //   return inputValues;
-  // }
+  _getInputValues() {
+    const inputValues = {};
+    const nameValue = this._popup.querySelector('.form__input_name').value;
+    const infoValue = this._popup.querySelector('.form__input_info').value;
+    inputValues['name'] = nameValue;
+    inputValues['link'] = infoValue;
+    inputValues['info'] = infoValue;
+    
+    return inputValues;
+  }
 
   setEventListeners() {
-    this._popup.querySelector('.form__button-submit').addEventListener('click', this._handleSubmitForm.bind(this));
+    this._popup.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      this._handleSubmitForm(this._getInputValues())
+    });
     super.setEventListeners();
   }
 

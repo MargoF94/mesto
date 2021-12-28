@@ -30,9 +30,6 @@ const addImageButton = document.querySelector('.profile__button-add');
 const nameInput = editProfilePopup.querySelector('.form__input_field_name');
 const descriptionInput = editProfilePopup.querySelector('.form__input_field_description');
 
-const imageNameInput = addElementPopup.querySelector('.form__input_field_image-name');
-const imageUrlInput = addElementPopup.querySelector('.form__input_field_image-url');
-
 const cardTemplate = document.querySelector('.element-template').content;
 
 const imageOpened = document.querySelector('.image-popup__image-opened');
@@ -48,6 +45,7 @@ popupImage.setEventListeners();
 
 const cardListSection = new Section({ 
   data: initialCards,
+  // Создает и отрисовывает карточку
   renderer: (item) => {
     const card = createCard(item);
     const cardElement = card.generateCard();
@@ -63,33 +61,17 @@ const user = new UserInfo({
 
 const profilePopup = new PopupWithForm(
   '.popup_role_edit-profile',
-  (evt) => {
-    evt.preventDefault();
-    user.setUserInfo(nameInput, descriptionInput);
+  (data) => {
+    // evt.preventDefault();
+    user.setUserInfo(data);
     profilePopup.close();
   }
 );
 
-const cardObject = getInputValues();
-
-const newCard = new Section(
-  {
-    data: cardObject,
-    renderer: (cardObject) => {
-      const card = createCard(cardObject);
-      const cardElement = card.generateCard();
-      newCard.addItem(cardElement);
-    }
-  },
-  '.elements__container'
-);
-
 const popupAddCard = new PopupWithForm(
   '.popup_role_add-element',
-  (evt) => {
-    evt.preventDefault();
-    const cardObject = getInputValues();
-    newCard.renderItem(cardObject);
+  (data) => {
+    cardListSection.renderItem(data);
     popupAddCard.close();
   }
 );
@@ -114,14 +96,6 @@ function createCard(cardObject) {
     cardTemplate
   );
   return card;
-}
-
-// Создает объект карточки на основе данных, введенных в поля
-function getInputValues() {
-  const cardData = {};
-  cardData.link = imageUrlInput.value;
-  cardData.name = imageNameInput.value;
-  return cardData;
 }
 
 profilePopup.setEventListeners();
@@ -153,9 +127,8 @@ enableValidation(configurations);
 // Event Listeners
 
 editProfileButton.addEventListener('click', function() {
-  // Получает данные пользователя в данный момент
+  // Получает данные пользователя в данный момент (object)
   const userData = user.getUserInfo();
-
   // Наполняем открытый попап информацией со станицы
   nameInput.value = userData.userName;
   descriptionInput.value = userData.userInfo;
