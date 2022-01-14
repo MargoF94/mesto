@@ -26,7 +26,6 @@ const cardFormElement = addElementPopup.querySelector('.form_role_add-image');
 /// Buttons
 const editProfileButton = document.querySelector('.profile__button-edit');
 const addImageButton = document.querySelector('.profile__button-add');
-const confirmDeleteButton = document.querySelector('.form__button-confirm');
 
 /// Elements
 
