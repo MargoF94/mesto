@@ -6,9 +6,9 @@ export default class Section {
   }
 
   // Отрисовывает все елементы
-  renderItems() {
-    this._renderedItems.forEach(item => {
-      this._renderer(item)
+  renderItems(items) {  // принимает на вход массив элементов
+    items.forEach(item => {  // проходит по элементам массива
+      this._renderer(item)   // рендерит каждый элемент
     })
   }
 
