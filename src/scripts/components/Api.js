@@ -5,18 +5,20 @@ export default class Api{
     this._token = headers.authorization;
   }
 
+  _checkResponse (res) {
+    if (res.ok) {
+      return res.json()
+    }
+    return Promise.reject(`Ошибка ${res.status}`)
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: {
         authorization: this._token
       }
-    }).then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось получить карточки')
-    })
+    }).then(this._checkResponse)
   }
 
   addCard(card) {
@@ -28,12 +30,7 @@ export default class Api{
         link: card.link
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось отправить карточку')
-    })
+    .then(this._checkResponse)
   };
 
   deleteCard(id) {
@@ -42,12 +39,8 @@ export default class Api{
       headers: {
         authorization: this._token
       }
-    }).then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось удалить карточку')
     })
+    .then(this._checkResponse)
   }
 
   getUserData() {
@@ -56,12 +49,8 @@ export default class Api{
       headers: {
         authorization: this._token
       }
-    }).then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось получить данные о пользователе');
-    });
+    })
+    .then(this._checkResponse)
   }
 
   changeUserData(userData) {
@@ -73,12 +62,7 @@ export default class Api{
         about: userData.about
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject('Не удалось получить данные о пользователе');
-    })
+    .then(this._checkResponse)
   };
 
   changeUserAvatar(avatarUrl) {
@@ -89,12 +73,7 @@ export default class Api{
         avatar: avatarUrl
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject('Не удалось обновить аватар');
-    });
+    .then(this._checkResponse)
   }
 
   likeCard(id) {
@@ -103,12 +82,7 @@ export default class Api{
       headers: {
         authorization: this._token
       }
-    }).then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось добавить лайк');
-    });
+    }).then(this._checkResponse)
   }
 
   removeLike(id) {
@@ -117,11 +91,7 @@ export default class Api{
       headers: {
         authorization: this._token
       }
-    }).then((res) => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject('Не удалось удалить лайк');
-    });
+    })
+    .then(this._checkResponse)
   }
 }

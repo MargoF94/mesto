@@ -51,7 +51,7 @@ export class Card {
   }
 
   _checkLikes() { // проверяет, лайкали ли эту карточку
-    if (this._likes.find(el => el === this._user)) { 
+    if (this._likes.some(el => el._id === this._user )) { 
       this._isMyLike = true;
     } else {
       this._isMyLike = false;
@@ -59,6 +59,7 @@ export class Card {
   }
 
   _renderLikes() { // освежает разметку и обновлет колво лайков
+    this._checkLikes()
     this._likesCounter.textContent = this._likes.length;
     if (this._isMyLike) {
       this._likeButton.classList.add('element__button-like_active');
@@ -75,11 +76,9 @@ export class Card {
   _handleLikeClick() {
     if(this._isMyLike) {
       this._removeLike(this);
-      this._likeButton.classList.remove('element__button-like_active');
       this._isMyLike = false;
     } else {
       this._setLike(this);
-      this._likeButton.classList.add('element__button-like_active');
       this._isMyLike = true;
     }
   }

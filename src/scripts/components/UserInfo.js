@@ -16,11 +16,15 @@ export default class UserInfo {
     return info;
   }
 
+  setAvatar(avatar) {
+    this._userAvatar.style.backgroundImage = `url(${avatar})`;
+  }
+
   // Принимает новые данные пользователя и добавляет их на страницу
   setUserInfo(data) {
     this._userName.textContent = data.name;
     this._userInfo.textContent = data.about;
-    // this._userAvatar.style.backgroundImage = 'url(data.avatar)';
-    // this._userAvatar.alt = data.name;
+    this._myId = data._id;
+    this.setAvatar(data.avatar)
   }
 }
