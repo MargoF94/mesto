@@ -9,7 +9,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupConfirmDelete from '../components/PopupConfirmDelete.js';
 import UserInfo from '../components/UserInfo.js';
 
-import '../../pages/index.css';
+import './index.css';
 import Api from '../components/Api.js';
 
 // Объявление переменных
